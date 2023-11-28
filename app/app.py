@@ -1,7 +1,7 @@
 import gradio as gr
 import openai
 
-openai.api_key = "sk-..."  # Replace with your key
+openai.api_key = "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"  # Replace with your key
 
 def predict(message, history):
     history_openai_format = []
@@ -23,4 +23,4 @@ def predict(message, history):
             partial_message = partial_message + chunk['choices'][0]['delta']['content']
             yield partial_message
 
-gr.ChatInterface(predict).queue().launch()
+gr.ChatInterface(predict).queue().launch(root_path="/ki-playground/gpt-3-5-turbo")
