@@ -1,7 +1,12 @@
 import gradio as gr
 import openai
+import os
+from dotenv import load_dotenv
 
-openai.api_key = "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"  # Replace with your key
+load_dotenv()
+
+API_KEY = os.getenv('API_KEY')
+openai.api_key = API_KEY
 
 def predict(message, history):
     history_openai_format = []
