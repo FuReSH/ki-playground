@@ -2,7 +2,6 @@ import gradio as gr
 import openai
 import config
 
-
 def predict(message, history):
     history_openai_format = []
     for human, assistant in history:
