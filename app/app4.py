@@ -1,23 +1,8 @@
-
-# testing huggingface inference api
-
+from transformers import pipeline
 import gradio as gr
 
-from transformers import pipeline
+pipe = pipeline("text-generation", model="meta-llama/Llama-2-7b-chat-hf")
 
-pipe = pipeline("text-generation", model="gpt2")
-
-def predict(text):
-  return pipe(text)[0]["translation_text"]
-
-demo = gr.ChatInterface(
-  fn=predict,
-  inputs='text',
-  outputs='text',
-)
-
-demo.launch()
-
-
-#demo = gr.load("gpt2-XL", src="models")
+demo = gr.Interface.from_pipeline(pipe)
+demo.launch(share=True)
 
