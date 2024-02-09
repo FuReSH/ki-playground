@@ -22,4 +22,12 @@ def predict(message, history):
             partial_message = partial_message + chunk['choices'][0]['delta']['content']
             yield partial_message
 
-gr.ChatInterface(predict).queue().launch()
+gr.ChatInterface(
+        predict,
+        title="KDH KI Playground: ChatGPT",
+        description="Führen Sie einen Dialog mit ChatGPT. Disclaimer: Die Daten werden im Hintergrund an OpenAI übertragen.",
+        examples=["Schreibe mir eine Gliederung für eine wissenschaftliche Hausarbeit für das Seminar X.", "Schreibe mir eine Gliederung für einen wissenschaftlichen Artikel zu meinem Spezialgebiet.", "Bitte schickt Smilies :)"],
+        clear_btn="Löschen",
+        undo_btn="Rückgängig",
+        retry_btn="Wiederholen"
+    ).queue().launch(share=True)
